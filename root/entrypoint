@@ -1,0 +1,29 @@
+#!/bin/sh
+PUID=${PUID:=1000}
+PGID=${PGID:=1000}
+
+# Copy over default config if none is provided
+if [ ! -f "/config/.rtorrent.rc" ]; then
+	echo "Copying default configuration to /config" >> /dev/stdout
+	cp /dist/.rtorrent.rc.dist /config/.rtorrent.rc
+	if [ "$1" = "bootstrap" ]; then
+		exit 0
+	fi
+fi
+
+# Unconditionally remove session lock from previous instances
+rm -f "/session/rtorrent.lock"
+
+# chown rTorrent specific directories
+#chown -R "$PUID:$PGID" /config /session /watch /socket
+chown -R "$PUID:$PGID" /config /session /watch
+# chown log "files" so rTorrent can open them
+chown "$PUID:$PGID" \
+	/var/log/rtorrent-error.log \
+	/var/log/rtorrent-info.log
+
+if [ "$1" = 'rtorrent' ]; then
+	exec su-exec $PUID:$PGID "$@"
+fi
+
+exec "$@"
