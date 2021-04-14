@@ -13,7 +13,7 @@ RUN apk add --no-cache \
       /dist \
       /config \
       /session \
-      #/socket \
+      /socket \
       /watch/load \
       /watch/start \
       /downloads \
@@ -22,8 +22,7 @@ RUN apk add --no-cache \
     ln -sf /dev/stdout /var/log/rtorrent-info.log && \
     ln -sf /dev/stderr /var/log/rtorrent-error.log
 
-#VOLUME ["/config", "/session", "/socket", "/watch", "/downloads"]
-VOLUME ["/config", "/session", "/watch", "/downloads"]
+VOLUME ["/config", "/session", "/socket", "/watch", "/downloads"]
 
 # Copy distribution rTorrent config for bootstrapping and entrypoint
 COPY ./root /
