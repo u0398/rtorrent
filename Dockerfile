@@ -1,6 +1,9 @@
 FROM alpine:3.13
 LABEL maintainer="u0398 <u0398@gmail.com>"
 
+# Based on looselyrigorous's rtorrent image (https://github.com/looselyrigorous/docker-rtorrent/)
+# Ideas from crazy-max's rtorrent/rutorrent image (https://github.com/crazy-max/docker-rtorrent-rutorrent/)
+
 # Install rtorrent and su-exec
 RUN apk add --no-cache \
       rtorrent \
