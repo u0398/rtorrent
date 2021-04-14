@@ -101,12 +101,13 @@ schedule2 = watch_load, 11, 10, ((load.verbose, (cat, (cfg.watch), "load/*.torre
 schedule2 = watch_start, 10, 10, ((load.start_verbose, (cat, (cfg.watch), "start/*.torrent")))
 
 # Move finished (no need for Autotools/Automove plugin on ruTorrent)
-method.insert = d.get_finished_dir, simple, "cat=$cfg.download_complete=,$d.custom1="
-method.insert = d.move_to_complete, simple, "d.directory.set=$argument.1=; execute=mkdir,-p,$argument.1=; execute=mv,-u,$argument.0=,$argument.1=; d.save_full_session="
-method.set_key = event.download.finished,move_complete,"d.move_to_complete=$d.data_path=,$d.get_finished_dir="
+#method.insert = d.get_finished_dir, simple, "cat=$cfg.download_complete=,$d.custom1="
+
+#method.insert = d.move_to_complete, simple, "d.directory.set=$argument.1=; execute=mkdir,-p,$argument.1=; execute=mv,-u,$argument.0=,$argument.1=; d.save_full_session="
+#method.set_key = event.download.finished,move_complete,"d.move_to_complete=$d.data_path=,$d.get_finished_dir="
 
 # Erase data when torrent deleted (no need erasedata plugin on ruTorrent)
-method.set_key = event.download.erased,delete_erased,"execute=rm,-rf,--,$d.data_path="
+#method.set_key = event.download.erased,delete_erased,"execute=rm,-rf,--,$d.data_path="
 
 ## Run the rTorrent process as a daemon in the background
 system.daemon.set = true
