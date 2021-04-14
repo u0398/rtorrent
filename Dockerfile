@@ -13,7 +13,8 @@ RUN apk add --no-cache \
       #/socket \
       /watch/load \
       /watch/start \
-      /downloads && \
+      /downloads \
+      /downloads/complete && \
     # Forward Info & Error logs to std{out,err} (à la nginx)
     ln -sf /dev/stdout /var/log/rtorrent-info.log && \
     ln -sf /dev/stderr /var/log/rtorrent-error.log
