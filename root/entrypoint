@@ -16,6 +16,7 @@ rm -f "/session/rtorrent.lock"
 
 # chown rTorrent specific directories
 chown -R "$PUID:$PGID" /config /session /watch /socket
+chmod -R +w /socket
 # chown log "files" so rTorrent can open them
 chown "$PUID:$PGID" \
 	/var/log/rtorrent-error.log \
