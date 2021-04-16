@@ -114,6 +114,7 @@ system.daemon.set = true
 
 # In case you want to use a socket instead
 network.scgi.open_local = (cfg.socketfile)
-execute.nothrow=chmod,"ugo+wrx",(cfg.socketfile)
+execute.nothrow=chmod,"a+rwx",(cfg.socketfile)
+#schedule = scgi_permission,0,0,"execute.nothrow=chmod,\"a+rwx,o=\",/socket/rpc.socket"
 
 ### END of rtorrent.rc ###
