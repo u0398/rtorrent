@@ -30,5 +30,3 @@ COPY ./root /
 ENTRYPOINT ["/entrypoint"]
 
 CMD ["rtorrent", "-n", "-o", "import=/config/.rtorrent.rc"]
-
-RUN chmod 777 /socket/rtorrent.socket
